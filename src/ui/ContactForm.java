@@ -17,20 +17,21 @@ public class ContactForm extends JFrame {
     private ContactBusiness cb;
 
     public ContactForm (){
+        //mostrando o conteúdo do painel da interface gráfica
         setContentPane(rootPanel);
         setSize(500,250);
         setVisible(true);
-
         //pega o tamanho do monitor
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         // configuração para nascer no meio da tela
         setLocation(dim.width/2 - getSize().width/2, dim.height/2 - getSize().height/2);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);// caso fechar, parar de executar o programa
         cb = new ContactBusiness();
+        //método para chamar os eventos dos botões
         setListeners();
     }
+        // salvando o contato
         public void setListeners(){
         buttonSave.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +50,7 @@ public class ContactForm extends JFrame {
                }
             }
         });
-
+        // caso cancelar voltar para o jframe main
         buttonCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

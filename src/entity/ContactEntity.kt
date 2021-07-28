@@ -1,5 +1,3 @@
 package ui.entity
-
-class ContactEntity (var name: String, var phone: String){
-
-}
+//classe de entidade para as instâncias com os dados
+class ContactEntity (var name: String, var phone: String)
