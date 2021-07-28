@@ -4,7 +4,7 @@ import ui.entity.ContactEntity
 import ui.repository.ContactRepository
 
 class ContactBusiness{
-    fun validate(name: String, phone: String){
+    private fun validate(name: String, phone: String){
         if(name == ""){
             throw Exception("Nome é obrigatório");
         }
@@ -12,7 +12,7 @@ class ContactBusiness{
             throw Exception("Telefone é obrigatório");
         }
     }
-    fun validateDelete(name: String, phone: String){
+    private fun validateDelete(name: String, phone: String){
         if(name == "" || phone == ""){
             throw Exception("É necesário selecionar um contato antes de remover.");
         }
@@ -25,8 +25,11 @@ class ContactBusiness{
     }
     fun delete(name: String, phone: String){
         validateDelete(name,phone);
-        ContactRepository.delete(contact);
+        val contact = ContactEntity(name,phone);
+        ContactRepository.save(contact);
     }
-
+    fun getList(): List<ContactEntity>{
+        return ContactRepository.getList();
+    }
 
 }
